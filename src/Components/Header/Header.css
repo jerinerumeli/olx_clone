@@ -119,6 +119,7 @@
   .sellMenu {
     position: relative;
     cursor: pointer;
+    margin-right: 15px;
   }
   
   .sellMenu .all {

@@ -36,3 +36,7 @@
     cursor: pointer;
   }
   
+.loading{
+  align-items: center;
+  margin-left: 48%;
+}

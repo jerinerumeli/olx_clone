@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import {FireBase,AuthFireBase} from './Store/FirebaseContex'
+import { Apps,Auth } from './Firebase/config';
+import Contex from './Store/AuthContexProvider';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <FireBase.Provider value={{data:Apps}}>
+      <AuthFireBase.Provider value={{Auth}}>
+        <Contex>
+          <App />
+        </Contex>
+      </AuthFireBase.Provider>
+    </FireBase.Provider>
   </React.StrictMode>
 );
 
