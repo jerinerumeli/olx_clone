@@ -8,6 +8,9 @@ import {Route,Routes, BrowserRouter as Router} from 'react-router-dom'
 import { AuthContex } from './Store/FirebaseContex';
 import { onAuthStateChanged,getAuth } from 'firebase/auth';
 import { FireBase } from './Store/FirebaseContex';
+import ViewPost from "./Pages/ViewPost"
+import Post from './Store/PostContextProvider';
+
 function App() {
   const {data} = useContext(FireBase)
   const auth = getAuth(data);
@@ -20,14 +23,17 @@ function App() {
   return (
     
     <div >
+      <Post>
         <Router>
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route exact path='/signup' element={<SignupPage />} />
             <Route exact path='/login' element={<LoginPage />} />
             <Route exact path='/create' element={<CreatePage />} />
+            <Route exact path='/view' element={<ViewPost/>} />
           </Routes>
         </Router>
+      </Post>
     </div>
   )
 }

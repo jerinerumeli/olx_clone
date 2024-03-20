@@ -26,7 +26,7 @@ const Create = () => {
 
   const createHandle = (e)=>{
     e.preventDefault();
-    setMessage(false)
+    // setMessage(false)
     const imgRef = ref(storage, `/images/${image.name}`);
     uploadBytes(imgRef, image).then((snapshot)=>{
       console.log('uploaded')
@@ -36,14 +36,17 @@ const Create = () => {
         console.log("downloadable url is")  
         console.log(url)
         addDoc(collection(DB, "products"), {
-          "id":user.uid,
+          "userid":user.uid,
           name,
           category,
           price,
           url,
           "created_at":date.toDateString()
         })
-        .then(()=>(setMessage(true)))
+        .then(()=>{
+          setMessage(true)
+          navigate('/')
+        })
       })
     })
     .catch((error)=>{
